@@ -1,0 +1,21 @@
+{
+  "name": "Voux",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "rn-cli": "node node_modules/react-native/local-cli/cli.js",
+    "start:android": "npm run rn-cli -- run-android",
+    "start:ios": "npm run rn-cli -- run-ios"
+  },
+  "dependencies": {
+    "@react-native-community/audio-toolkit": "^2.0.2",
+    "@react-native-community/slider": "^1.1.2",
+    "react": "16.8.3",
+    "react-native": "0.59.8"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/runtime": "^7.4.5",
+    "metro-react-native-babel-preset": "^0.54.1"
+  }
+}
