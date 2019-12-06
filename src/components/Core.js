@@ -6,8 +6,7 @@ import {
   SafeAreaView,
   StyleSheet,
   Text,
-  View,
-  StatusBar } from 'react-native';
+  View } from 'react-native';
   import Slider from '@react-native-community/slider';
   import { Player, Recorder, MediaStates } from '@react-native-community/audio-toolkit';
 
@@ -29,7 +28,7 @@ import {
     error: string | null
   };
 
-  export default class Rec extends Component<Props, State> {
+  export default class Core extends Component<Props, State> {
     player: Player | null;
     recorder: Recorder | null;
     lastSeek: number;
@@ -244,6 +243,11 @@ import {
               </TouchableOpacity>
             </View>
             <View>
+              <TouchableOpacity style={styles.pbtn} title={this.state.playPauseButton} disabled={this.state.playButtonDisabled} onPress={() => this._playPause()}>
+                <Text style={styles.btnText}>{this.state.playPauseButton}</Text>
+              </TouchableOpacity>
+            </View>
+            <View>
               <Text style={styles.errorMessage}>{this.state.error}</Text>
             </View>
           </SafeAreaView>
@@ -265,6 +269,15 @@ import {
       width: 150,
       height: 150,
       justifyContent: 'center',
+      margin: 20
+    },
+    pbtn: {
+      borderColor: '#fff',
+      borderWidth: 1,
+      borderRadius: 100 / 2,
+      width: 100,
+      height: 100,
+      justifyContent: 'center',
     },
     btnText: {
       color: '#fff',
@@ -279,7 +292,7 @@ import {
       flex: 1,
       backgroundColor: '#000',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
     },
     errorMessage: {
       fontSize: 15,

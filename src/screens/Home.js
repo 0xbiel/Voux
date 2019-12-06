@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Rec from '../components/Recorder';
+import Core from '../components/Core';
 
 export default class App extends Component {
   render() {
-    return <Rec/>;
+    return <Core/>;
   }
 }
