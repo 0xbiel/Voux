@@ -10,7 +10,7 @@ import {
   import Slider from '@react-native-community/slider';
   import { Player, Recorder, MediaStates } from '@react-native-community/audio-toolkit';
 
-  const filename = 'test.mp4';
+  const filename = 'audio.mp4';
 
   type Props = {};
 
@@ -82,8 +82,8 @@ import {
 
     _updateState(err) {
       this.setState({
-        playPauseButton: this.player && this.player.isPlaying ? 'Pause' : 'Play',
-        recordButton: this.recorder && this.recorder.isRecording ? 'Stop' : 'Record',
+        playPauseButton: this.player && this.player.isPlaying ? 'PS' : 'PL',
+        recordButton: this.recorder && this.recorder.isRecording ? 'S' : 'R',
 
         stopButtonDisabled: !this.player || !this.player.canStop,
         playButtonDisabled: !this.player || !this.player.canPlay || this.recorder.isRecording,
@@ -244,7 +244,7 @@ import {
             </View>
             <View>
               <TouchableOpacity style={styles.pbtn} title={this.state.playPauseButton} disabled={this.state.playButtonDisabled} onPress={() => this._playPause()}>
-                <Text style={styles.btnText}>{this.state.playPauseButton}</Text>
+                <Text style={styles.pBtnText}>{this.state.playPauseButton}</Text>
               </TouchableOpacity>
             </View>
             <View>
@@ -264,16 +264,16 @@ import {
     },
     btn: {
       borderColor: '#fff',
-      borderWidth: 1,
+      borderWidth: 8,
       borderRadius: 150 / 2,
       width: 150,
       height: 150,
       justifyContent: 'center',
-      margin: 20
+      marginBottom: 20
     },
     pbtn: {
       borderColor: '#fff',
-      borderWidth: 1,
+      borderWidth: 4,
       borderRadius: 100 / 2,
       width: 100,
       height: 100,
@@ -282,7 +282,13 @@ import {
     btnText: {
       color: '#fff',
       textAlign: 'center',
-      fontWeight: 'bold'
+      fontSize: 90
+    },
+    pBtnText: {
+      color: '#fff',
+      textAlign: 'center',
+      fontWeight: '100',
+      fontSize: 40
     },
     settingsContainer: {
       alignItems: 'center',
