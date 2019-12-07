@@ -82,7 +82,7 @@ import {
 
     _updateState(err) {
       this.setState({
-        playPauseButton: this.player && this.player.isPlaying ? 'PS' : 'PL',
+        playPauseButton: this.player && this.player.isPlaying ? '||' : '>',
         recordButton: this.recorder && this.recorder.isRecording ? 'S' : 'R',
 
         stopButtonDisabled: !this.player || !this.player.canStop,
@@ -264,7 +264,7 @@ import {
     },
     btn: {
       borderColor: '#fff',
-      borderWidth: 8,
+      borderWidth: 1,
       borderRadius: 150 / 2,
       width: 150,
       height: 150,
@@ -273,7 +273,7 @@ import {
     },
     pbtn: {
       borderColor: '#fff',
-      borderWidth: 4,
+      borderWidth: 1,
       borderRadius: 100 / 2,
       width: 100,
       height: 100,
@@ -282,13 +282,14 @@ import {
     btnText: {
       color: '#fff',
       textAlign: 'center',
-      fontSize: 90
+      fontWeight: '100',
+      fontSize: 40
     },
     pBtnText: {
       color: '#fff',
       textAlign: 'center',
       fontWeight: '100',
-      fontSize: 40
+      fontSize: 20
     },
     settingsContainer: {
       alignItems: 'center',
