@@ -250,6 +250,16 @@ import {
             <View>
               <Text style={styles.errorMessage}>{this.state.error}</Text>
             </View>
+            <View>
+              <Slider
+                thumbTintColor='#fff'
+                step={0.0001}
+                disabled={this.state.playButtonDisabled}
+                onValueChange={(percentage) => this._seek(percentage)}
+                value={this.state.progress}
+                minimumTrackTintColor='#fff'
+                maximumTrackTintColor='#fff'/>
+            </View>
           </SafeAreaView>
         </>
       );
@@ -257,24 +267,19 @@ import {
   }
 
   const styles = StyleSheet.create({
-    slider: {
-      height: 10,
-      margin: 10,
-      marginBottom: 50,
-    },
     btn: {
       borderColor: '#fff',
       borderWidth: 1,
-      borderRadius: 150 / 2,
-      width: 150,
-      height: 150,
+      borderRadius: 4,
+      width: 100,
+      height: 50,
       justifyContent: 'center',
       marginBottom: 20
     },
     pbtn: {
       borderColor: '#fff',
       borderWidth: 1,
-      borderRadius: 100 / 2,
+      borderRadius: 4,
       width: 100,
       height: 100,
       justifyContent: 'center',
@@ -283,7 +288,7 @@ import {
       color: '#fff',
       textAlign: 'center',
       fontWeight: '100',
-      fontSize: 40
+      fontSize: 20
     },
     pBtnText: {
       color: '#fff',
