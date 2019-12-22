@@ -83,7 +83,7 @@ import {
     _updateState(err) {
       this.setState({
         playPauseButton: this.player && this.player.isPlaying ? '||' : '>',
-        recordButton: this.recorder && this.recorder.isRecording ? 'S' : 'R',
+        recordButton: this.recorder && this.recorder.isRecording ? 'Stop' : 'Rec',
 
         stopButtonDisabled: !this.player || !this.player.canStop,
         playButtonDisabled: !this.player || !this.player.canPlay || this.recorder.isRecording,
@@ -252,6 +252,7 @@ import {
             </View>
             <View>
               <Slider
+                style={styles.slider}
                 thumbTintColor='#fff'
                 step={0.0001}
                 disabled={this.state.playButtonDisabled}
@@ -267,11 +268,14 @@ import {
   }
 
   const styles = StyleSheet.create({
+    slider: {
+      width: 150
+    },
     btn: {
       borderColor: '#fff',
       borderWidth: 1,
       borderRadius: 4,
-      width: 100,
+      width: 150,
       height: 50,
       justifyContent: 'center',
       marginBottom: 20
@@ -280,7 +284,7 @@ import {
       borderColor: '#fff',
       borderWidth: 1,
       borderRadius: 4,
-      width: 100,
+      width: 150,
       height: 100,
       justifyContent: 'center',
     },

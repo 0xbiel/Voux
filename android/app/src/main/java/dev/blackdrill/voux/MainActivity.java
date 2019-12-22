@@ -1,4 +1,4 @@
-package com.reactnativeaudiotoolkit.exampleapp;
+package dev.blackdrill.voux;
 
 import com.facebook.react.ReactActivity;
 
