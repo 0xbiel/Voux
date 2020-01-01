@@ -1,7 +1,7 @@
 <p align="center">
   <img src="./android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" alt="Icon" />
 </p>
-<h1 align="center"><a href="https://blackdrill.dev/products/voux">Voux</a></h1>
+<h1 align="center">Voux</h1>
 <p align="center">
   Uncluttered Android Voice Recorder!
 </p>
