@@ -1,20 +1,20 @@
 <manifest
   xmlns:android="http://schemas.android.com/apk/res/android"
-  package="dev.blackdrill.voux">
+  package="com.gabrielpolastrini.voux">
 
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
   <application
-    android:name="dev.blackdrill.voux.MainApplication"
+    android:name="com.gabrielpolastrini.voux.MainApplication"
     android:label="@string/app_name"
     android:icon="@mipmap/ic_launcher"
     android:allowBackup="false"
     android:theme="@style/AppTheme">
 
     <activity
-      android:name="dev.blackdrill.voux.MainActivity"
+      android:name="com.gabrielpolastrini.voux.MainActivity"
       android:label="@string/app_name"
       android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
       android:windowSoftInputMode="adjustResize">

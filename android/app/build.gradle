@@ -102,7 +102,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "dev.blackdrill.voux"
+        applicationId "com.gabrielpolastrini.voux"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

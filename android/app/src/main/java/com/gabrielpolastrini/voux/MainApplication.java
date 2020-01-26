@@ -1,4 +1,4 @@
-package dev.blackdrill.voux;
+package com.gabrielpolastrini.voux;
 
 import android.app.Application;
 
