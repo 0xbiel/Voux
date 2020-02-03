@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import {
   TouchableOpacity,
   PermissionsAndroid,
@@ -7,10 +8,26 @@ import {
   StyleSheet,
   Text,
   View } from 'react-native';
-  import Slider from '@react-native-community/slider';
-  import { Player, Recorder, MediaStates } from '@react-native-community/audio-toolkit';
+  
+import Slider from '@react-native-community/slider';
+  
+import { Player, Recorder, MediaStates } from '@react-native-community/audio-toolkit';
+
+import * as RNFS from 'react-native-fs';
 
   const filename = 'audio.mp4';
+
+  const path = RNFS.ExternalStorageDirectoryPath + filename;
+
+  function saveFile() {
+    RNFS.writeFile(path, filename, 'ascii').then(res => {
+      console.log("FILE WRITTEN");
+    
+    })
+    .catch(err => {
+      console.log(err.message);
+    });
+  }
 
   type Props = {};
 
@@ -82,8 +99,8 @@ import {
 
     _updateState(err) {
       this.setState({
-        playPauseButton: this.player && this.player.isPlaying ? '||' : '>',
-        recordButton: this.recorder && this.recorder.isRecording ? 'Stop' : 'Rec',
+        playPauseButton: this.player && this.player.isPlaying ? '।।' : 'ᐅ',
+        recordButton: this.recorder && this.recorder.isRecording ? '■' : '•',
 
         stopButtonDisabled: !this.player || !this.player.canStop,
         playButtonDisabled: !this.player || !this.player.canPlay || this.recorder.isRecording,
@@ -261,6 +278,11 @@ import {
                 minimumTrackTintColor='#fff'
                 maximumTrackTintColor='#fff'/>
             </View>
+            <View>
+              <TouchableOpacity style={styles.dbtn} onPress={() => saveFile()}>
+                <Text style={styles.btnText}>⤓</Text>
+              </TouchableOpacity>
+            </View>
           </SafeAreaView>
         </>
       );
@@ -280,6 +302,17 @@ import {
       justifyContent: 'center',
       marginBottom: 20
     },
+
+    dbtn: {
+      borderColor: '#fff',
+      borderWidth: 1,
+      borderRadius: 4,
+      width: 150,
+      height: 50,
+      justifyContent: 'center',
+      marginTop: 40
+    },
+
     pbtn: {
       borderColor: '#fff',
       borderWidth: 1,
