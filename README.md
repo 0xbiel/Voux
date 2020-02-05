@@ -6,4 +6,12 @@
   Uncluttered Android Voice Recorder!
 </p>
 
-<h4 align="center">Download Soon</h1>
+<h4 align="center">Download Soon</h4>
+
+<p align="center">
+  <img src="./voux1.png" alt="Icon" width="300px"/>
+</p>
+
+<p align="center">
+  <img src="./voux2.png" alt="Icon" width="300px"/>
+</p>
