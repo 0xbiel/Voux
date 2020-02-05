@@ -7,7 +7,9 @@ import {
   SafeAreaView,
   StyleSheet,
   Text,
-  View } from 'react-native';
+  View,
+  Share,
+  ToastAndroid } from 'react-native';
   
 import Slider from '@react-native-community/slider';
   
@@ -15,35 +17,65 @@ import { Player, Recorder, MediaStates } from '@react-native-community/audio-too
 
 import * as RNFS from 'react-native-fs';
 
-  const filename = 'audio.mp4';
+async function requestSavePermission() {
+  try {
+    const granted = await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+      {
+        title: 'Voux Save Permission',
+        message:
+          'Voux needs access to your storage' +
+          'so you can save your recordings!',
+        buttonNeutral: 'Ask Me Later',
+        buttonNegative: 'Cancel',
+        buttonPositive: 'OK',
+      },
+    );
+    if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+      console.log('Granted');
 
-  const path = RNFS.ExternalStorageDirectoryPath + filename;
+      const path = RNFS.ExternalStorageDirectoryPath + '/' + filename;
 
-  function saveFile() {
-    RNFS.writeFile(path, filename, 'ascii').then(res => {
-      console.log("FILE WRITTEN");
-    
-    })
-    .catch(err => {
-      console.log(err.message);
-    });
+      RNFS.writeFile(path, filename, 'utf8')
+        .then((success) => {
+          console.log('FILE WRITTEN!');
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+
+      ToastAndroid.show('File saved to /storage/emulated/0/audio.mp4', ToastAndroid.SHORT);
+ 
+    } else {
+      console.log('Denied');
+    }
+  } catch (err) {
+    console.warn(err);
   }
+}
 
-  type Props = {};
+const filename = 'audio.mp4';
 
-  type State = {
-    playPauseButton: string,
-    recordButton: string,
+function saveFile() {
+  requestSavePermission();
 
-    stopButtonDisabled: boolean,
-    playButtonDisabled: boolean,
-    recordButtonDisabled: boolean,
+}    
+ 
+type Props = {};
 
-    loopButtonStatus: boolean,
+type State = {
+  playPauseButton: string,
+  recordButton: string,
+
+  stopButtonDisabled: boolean,
+  playButtonDisabled: boolean,
+  recordButtonDisabled: boolean,
+
+  loopButtonStatus: boolean,
     progress: number,
 
-    error: string | null
-  };
+  error: string | null
+};
 
   export default class Core extends Component<Props, State> {
     player: Player | null;
@@ -279,7 +311,7 @@ import * as RNFS from 'react-native-fs';
                 maximumTrackTintColor='#fff'/>
             </View>
             <View>
-              <TouchableOpacity style={styles.dbtn} onPress={() => saveFile()}>
+              <TouchableOpacity style={styles.sbtn} onPress={() => requestSavePermission()}>
                 <Text style={styles.btnText}>⤓</Text>
               </TouchableOpacity>
             </View>
@@ -303,7 +335,7 @@ import * as RNFS from 'react-native-fs';
       marginBottom: 20
     },
 
-    dbtn: {
+    sbtn: {
       borderColor: '#fff',
       borderWidth: 1,
       borderRadius: 4,
